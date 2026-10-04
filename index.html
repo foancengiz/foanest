@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Foanest — Real Estate Investment & Development">
+  <title>Foanest | Real Estate Investment & Development</title>
+
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --bg-soft: #0e0e10;
+      --text: #f0efec;
+      --muted: #8f8d89;
+      --gold: #c9a061;
+      --line: rgba(201,160,97,.25);
+      --line-soft: rgba(255,255,255,.11);
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 48px));
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,11,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Georgia, serif;
+      font-weight: bold;
+      letter-spacing: .04em;
+      font-size: 20px;
+    }
+
+    .logo-mark {
+      color: var(--gold);
+      font-size: 25px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      color: #979591;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta,
+    .outline-button {
+      border: 1px solid var(--gold);
+      padding: 16px 29px;
+      font-size: 12px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: .25s;
+    }
+
+    .nav-cta:hover,
+    .outline-button:hover {
+      background: var(--gold);
+      color: #0a0a0b;
+    }
+
+    /* GENERAL */
+
+    section {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-size: clamp(42px, 5vw, 61px);
+      line-height: 1.08;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: calc(100vh - 96px);
+      display: grid;
+      grid-template-columns: 58% 42%;
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      padding: 115px max(48px, calc((100vw - var(--max))/2));
+      padding-right: 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(58px, 6vw, 90px);
+      line-height: .98;
+      letter-spacing: -.025em;
+      max-width: 750px;
+    }
+
+    .hero h1 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .hero-copy p {
+      color: #a5a29d;
+      max-width: 560px;
+      margin-top: 40px;
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      margin-top: 48px;
+    }
+
+    .text-link {
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    .hero-image {
+      min-height: 700px;
+      background:
+        linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.12)),
+        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85")
+        center/cover;
+      position: relative;
+    }
+
+    .plate {
+      position: absolute;
+      bottom: 35px;
+      left: 35px;
+      color: #ddd;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .plate::before {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: rgba(255,255,255,.5);
+      margin-bottom: 16px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      padding: 125px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 31% 69%;
+      gap: 80px;
+    }
+
+    .about-copy {
+      max-width: 650px;
+    }
+
+    .lead {
+      font-size: 17px;
+      color: #aaa7a1;
+      margin-bottom: 30px;
+    }
+
+    .lead::first-letter {
+      font-family: Georgia, serif;
+      color: var(--gold);
+      font-size: 60px;
+      float: left;
+      line-height: .75;
+      padding-right: 10px;
+      padding-top: 8px;
+    }
+
+    .about-copy p:not(.lead) {
+      color: #94918d;
+      margin-bottom: 25px;
+    }
+
+    /* ACTIVITIES */
+
+    .activities {
+      padding: 120px 0;
+    }
+
+    .activities-header {
+      margin-bottom: 65px;
+    }
+
+    .activity {
+      display: grid;
+      grid-template-columns: 70px 1fr 1.25fr;
+      gap: 45px;
+      padding: 30px 0;
+      border-top: 1px solid var(--line-soft);
+      align-items: start;
+    }
+
+    .activity:last-child {
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .activity-number {
+      font-family: Georgia, serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 17px;
+    }
+
+    .activity h3 {
+      font-size: 25px;
+    }
+
+    .activity p {
+      color: #96938e;
+      font-size: 15px;
+    }
+
+    /* APPROACH */
+
+    .approach {
+      padding: 120px 0;
+    }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 85px;
+      align-items: center;
+    }
+
+    .approach-image {
+      height: 540px;
+      background:
+        url("https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1100&q=85")
+        center/cover;
+      position: relative;
+    }
+
+    .approach-copy > p {
+      color: #999691;
+      margin: 20px 0 30px;
+    }
+
+    .principle {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      border-top: 1px solid var(--line-soft);
+      padding: 24px 0;
+      align-items: center;
+    }
+
+    .principle:last-child {
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .principle span {
+      color: var(--gold);
+      font-family: Georgia, serif;
+      font-style: italic;
+    }
+
+    .principle h3 {
+      font-size: 20px;
+    }
+
+    /* PARTNERSHIPS */
+
+    .partnerships {
+      padding: 125px 0 0;
+    }
+
+    .partnership-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      padding-bottom: 120px;
+    }
+
+    .partnership-text p {
+      color: #999691;
+      max-width: 520px;
+      margin-top: 30px;
+    }
+
+    .statement {
+      border-left: 1px solid var(--line-soft);
+      padding: 65px 0 65px 65px;
+      display: flex;
+      align-items: center;
+    }
+
+    .statement p {
+      font-family: Georgia, serif;
+      font-size: 32px;
+      line-height: 1.3;
+      font-style: italic;
+      max-width: 440px;
+    }
+
+    .statement em {
+      color: var(--gold);
+    }
+
+    /* WHY */
+
+    .why {
+      padding: 110px 0 120px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 90px;
+    }
+
+    .why-art {
+      min-height: 470px;
+      position: relative;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(201,160,97,.055);
+    }
+
+    .shape.one {
+      width: 55%;
+      height: 72%;
+      top: 0;
+      left: 14%;
+    }
+
+    .shape.two {
+      width: 75%;
+      height: 30%;
+      top: 16%;
+      left: 0;
+    }
+
+    .shape.three {
+      width: 65%;
+      height: 30%;
+      top: 48%;
+      left: 20%;
+    }
+
+    .why-list {
+      margin-top: 35px;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .why-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line-soft);
+      color: #999691;
+    }
+
+    .why-item::before {
+      content: "✓";
+      color: var(--gold);
+      margin-right: 18px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      padding: 90px 0 120px;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .contact-header .eyebrow {
+      justify-content: center;
+    }
+
+    .contact-header p {
+      color: #96938e;
+      margin: 20px auto 0;
+      max-width: 560px;
+    }
+
+    .contact-form {
+      width: min(520px, 100%);
+      margin: auto;
+      border: 1px solid var(--line-soft);
+      padding: 38px;
+    }
+
+    label {
+      display: block;
+      color: #9b9893;
+      font-size: 12px;
+      margin: 0 0 8px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      background: #111113;
+      border: 1px solid rgba(255,255,255,.1);
+      color: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--gold);
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .send {
+      width: 100%;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: white;
+      padding: 17px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .send:hover {
+      background: var(--gold);
+      color: #090909;
+    }
+
+    .direct-email {
+      text-align: center;
+      margin-top: 22px;
+      color: #686662;
+      font-size: 12px;
+    }
+
+    .direct-email a {
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 48px 0;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+    }
+
+    .footer-brand {
+      font-family: Georgia, serif;
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .footer-sub,
+    .copyright {
+      color: #74716d;
+      font-size: 12px;
+    }
+
+    .footer-right {
+      text-align: right;
+    }
+
+    .footer-email {
+      color: #9d9a94;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      nav {
+        height: auto;
+        padding: 22px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-cta {
+        padding: 12px 17px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding: 85px 30px;
+      }
+
+      .hero-image {
+        min-height: 480px;
+      }
+
+      .about-grid,
+      .approach-grid,
+      .partnership-top,
+      .why {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .activity {
+        grid-template-columns: 45px 1fr;
+      }
+
+      .activity p {
+        grid-column: 2;
+      }
+
+      .statement {
+        padding: 45px 0;
+        border-left: 0;
+        border-top: 1px solid var(--line-soft);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .about,
+      .activities,
+      .approach,
+      .contact {
+        padding: 80px 0;
+      }
+
+      .activity {
+        gap: 15px;
+      }
+
+      .approach-image {
+        height: 400px;
+      }
+
+      .statement p {
+        font-size: 27px;
+      }
+
+      .contact-form {
+        padding: 25px;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#home" class="logo">
+        <span class="logo-mark">F</span>
+        FOANEST
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#activities">What We Do</a>
+        <a href="#approach">Our Approach</a>
+        <a href="#partnerships">Partnerships</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a href="#contact" class="nav-cta">Get in Touch</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <h1>
+      Foanest — Real Estate<br>
+      Investment &<br>
+      <em>Development</em>
+    </h1>
+
+    <p>
+      Building income-generating real estate portfolios, developing
+      scalable projects, and creating long-term value across the U.S. market.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#activities" class="outline-button">Explore Our Activities →</a>
+      <a href="#contact" class="text-link">Contact Us</a>
+    </div>
+  </div>
+
+  <div class="hero-image">
+    <div class="plate">Plate No. 01</div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+
+    <div>
+      <div class="eyebrow">Who We Are</div>
+      <h2 class="section-title">About<br>Foanest</h2>
+    </div>
+
+    <div class="about-copy">
+      <p class="lead">
+        Foanest is a real estate investment and development company focused
+        on building sustainable, income-generating portfolios across the United States.
+      </p>
+
+      <p>
+        The company operates across multiple real estate strategies, including
+        property acquisition, development, portfolio management, and structured
+        investment models. Foanest aims to combine financial discipline with
+        practical execution to create stable cash flow and long-term asset appreciation.
+      </p>
+
+      <p>
+        With a flexible and opportunity-driven approach, Foanest evaluates and
+        executes projects across different asset types and markets, adapting to
+        changing market conditions while maintaining a strong focus on value creation.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="activities" id="activities">
+  <div class="container">
+
+    <div class="activities-header">
+      <div class="eyebrow">Core Activities</div>
+      <h2 class="section-title">What We Do</h2>
+    </div>
+
+    <div class="activity">
+      <div class="activity-number">01</div>
+      <h3>Portfolio Building</h3>
+      <p>Acquiring and managing income-producing properties designed to generate consistent cash flow.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-number">02</div>
+      <h3>Credit-Based Acquisitions</h3>
+      <p>Utilizing financing strategies to optimize capital efficiency and scale real estate investments.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-number">03</div>
+      <h3>Real Estate Development</h3>
+      <p>Developing residential and mixed-use projects based on market demand and feasibility.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-number">04</div>
+      <h3>Investment Partnerships</h3>
+      <p>Collaborating with investors through structured models to grow real estate portfolios.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-number">05</div>
+      <h3>Property Trading</h3>
+      <p>Buying and selling residential and other real estate assets to capture market opportunities.</p>
+    </div>
+
+    <div class="activity">
+      <div class="activity-number">06</div>
+      <h3>Flexible Real Estate Strategies</h3>
+      <p>Operating across various real estate types including land, residential, and value-add opportunities.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="container approach-grid">
+
+    <div class="approach-image">
+      <div class="plate">Plate No. 02</div>
+    </div>
+
+    <div class="approach-copy">
+      <div class="eyebrow">Investment Philosophy</div>
+      <h2 class="section-title">Our Approach</h2>
+
+      <p>
+        Foanest follows a pragmatic and data-driven investment approach focused on:
+      </p>
+
+      <div class="principle">
+        <span>01</span>
+        <h3>Cash flow generation as a primary driver</h3>
+      </div>
+
+      <div class="principle">
+        <span>02</span>
+        <h3>Efficient use of leverage and financing</h3>
+      </div>
+
+      <div class="principle">
+        <span>03</span>
+        <h3>Scalable portfolio construction</h3>
+      </div>
+
+      <div class="principle">
+        <span>04</span>
+        <h3>Market-based opportunity selection</h3>
+      </div>
+
+      <div class="principle">
+        <span>05</span>
+        <h3>Risk-aware investment structuring</h3>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="partnerships" id="partnerships">
+  <div class="container">
+
+    <div class="partnership-top">
+
+      <div class="partnership-text">
+        <div class="eyebrow">Collaboration</div>
+        <h2 class="section-title">Partnerships</h2>
+
+        <p>
+          Foanest collaborates with investors and partners to execute real estate
+          opportunities at scale.
+        </p>
+
+        <p>
+          Partnership structures are designed to align interests, optimize capital
+          allocation, and enable participation in income-generating real estate assets.
+        </p>
+      </div>
+
+      <div class="statement">
+        <p>
+          The company focuses on
+          <em>transparent, structured, and performance-driven partnerships.</em>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="why">
+
+      <div class="why-art">
+        <div class="shape one"></div>
+        <div class="shape two"></div>
+        <div class="shape three"></div>
+      </div>
+
+      <div>
+        <div class="eyebrow">The Difference</div>
+        <h2 class="section-title">Why Foanest</h2>
+
+        <div class="why-list">
+          <div class="why-item">Focus on cash-generating assets</div>
+          <div class="why-item">Flexible and scalable investment strategies</div>
+          <div class="why-item">Experience-driven decision making</div>
+          <div class="why-item">Access to diverse real estate opportunities</div>
+          <div class="why-item">Structured and disciplined execution</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+
+    <div class="contact-header">
+      <div class="eyebrow">Get in Touch</div>
+      <h2 class="section-title">Contact</h2>
+      <p>
+        For investment opportunities, partnerships, or general inquiries,
+        please get in touch.
+      </p>
+    </div>
+
+    <form class="contact-form" action="mailto:info@foanest.com" method="post" enctype="text/plain">
+
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" placeholder="Your name" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@company.com" required>
+
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" type="text" placeholder="Investment inquiry, partnership, general">
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell us about your inquiry..." required></textarea>
+
+      <button class="send" type="submit">Send Message ↗</button>
+
+      <div class="direct-email">
+        Or email us directly at
+        <a href="mailto:info@foanest.com">info@foanest.com</a>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div>
+      <div class="footer-brand">
+        <span style="color:var(--gold)">F</span> &nbsp;Foanest
+      </div>
+      <div class="footer-sub">Real Estate Investment & Development</div>
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-email">info@foanest.com</div>
+      <div class="copyright">© 2026 Foanest. All rights reserved.</div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
